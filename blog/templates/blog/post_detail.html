@@ -1,0 +1,38 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div>
+    <h4>@Model.Movie.Title</h4>
+    <hr />
+    <dl class="row">
+        <div class="col-md-3">
+            <img class="img-fluid" src="{{ object.image.url }}" alt="">
+        </div>
+        <div class="col-md-6">
+            <h5>{{ object.title }}/h5>
+            <p>{{ object.content }}</p>
+        </div>
+        <div class="article-metadata">
+            <img class="rounded-circle article-img" src="{{object.author.profile.image.url}}" alt="user">
+            <a class="mr-2" href="">{{object.author}}</a>
+            <small class="article-title">{{object.date_posted|date:"F d, Y"}}</small>
+        </div>
+        {% if object.author == user %}
+            <div class="form-group">
+                <a class="btn btn-primary" href="{% url 'blog-update' object.id %}">Update</a>
+                <a class="btn btn-danger" href="{% url 'blog-delete' object.id %}">Delete</a>
+            </div>
+        {% endif %}
+        <div class="col-md-3">
+            <h5>Related Movies</h5>
+            
+            
+            
+        </div>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
+{% endblock %}

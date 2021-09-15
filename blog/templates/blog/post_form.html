@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div class="container">
+    <main role="main" class="pb-3">
+        <h1 style="text-align: center">Blog Post</h1>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                {% load crispy_forms_tags %}
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    {% csrf_token %}
+                    {{ form|crispy }}
+        
+                    <div class="form-group">
+                        <input type="submit" value="Post" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+</main>
+</div>
+
+{% endblock %}
